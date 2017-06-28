@@ -6,28 +6,45 @@
 const express = require('express');
 const router = express.Router();
 
+const Content = require('../models/content');
+
+const Ninja = require('../models/ninja');
+
 
 //get data from database
-router.get('/data', function (req, res) {
+router.get('/data', function (req, res, next) {
     res.send({type:'GET'})   //sending back a simple object
 });
 
 
 //Adding new data
-router.post('/data', function (req, res) {
-    res.send({type:'POST'})
+
+router.post('/data', function(req, res, next){
+    Content.create(req.body).then(function(data){
+        res.send(data);
+    }).catch(next);
 });
 
-
 //Update data from database
-router.put('/data/:id', function (req, res) {
-    res.send({type:'PUT'})
+router.put('/data/:id', function (req, res, next) {
+    Content.findByIdAndUpdate({_id:req.params.id},req.body).then(function () {
+        Content.findOne({_id:req.params.id}).then(function (data) {
+            res.send(data);
+        });
+
+    });
+    //res.send({type:'PUT'})
 });
 
 
 // Deleting data from database
-router.delete('/data/:id', function (req, res) {
-    res.send({type:'DELETE'})
+router.delete('/data/:id', function (req, res, next) {
+    //console.log(req.params.id);
+
+    Content.findByIdAndRemove({_id: req.params.id}).then(function (data) {
+        res.send(data); //Will show the id that we deleted.
+    });
+    //res.send({type:'DELETE'})
 });
 
 
