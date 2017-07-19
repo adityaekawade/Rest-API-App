@@ -18,11 +18,11 @@ const app = express();
 
 //Connect to mongo db
 
-var uristring = process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL || 'mongodb://localhost/restapidb';
+/*var uristring = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL || 'mongodb://localhost/restapidb';*/
 
 
-    mongoose.connect(uristring);
+    mongoose.connect('mongodb://heroku_ltjg7t5s:nvl5a5afl1deor21s35ceoa003@ds129028.mlab.com:29028/heroku_ltjg7t5s');
     mongoose.Promise = global.Promise;
 
 
