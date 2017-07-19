@@ -17,14 +17,16 @@ const app = express();
 
 
 //Connect to mongo db
-/*
-mongoose.connect('localhost:27107/restapidb');
-mongoose.Promise = global.Promise;
-*/
+
+var uristring = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL || 'mongodb://localhost/restapidb';
 
 
-mongoose.connect('mongodb://localhost/restapidb');
-mongoose.Promise = global.Promise;
+    mongoose.connect(uristring);
+    mongoose.Promise = global.Promise;
+
+
+app.use(express.static('public'));
 
 //Using body-parser middleware
 app.use(bodyParser.json());
@@ -42,7 +44,7 @@ app.use(function (err, req, res, next) {
 
 
 // listen for requests
-app.listen(process.env.port || 4000, function(){
+app.listen(process.env.port || 5000, function(){
     console.log('listening for requests');
 });
 

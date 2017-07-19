@@ -13,9 +13,19 @@ const Ninja = require('../models/ninja');
 
 //get data from database
 router.get('/data', function (req, res, next) {
-    res.send({type:'GET'})   //sending back a simple object
-});
+    Content.find({}).then(function (data) {
+        res.send(data);
+    })
+    //res.send({type:'GET'})   //sending back a simple object
+})
 
+
+router.get('/specificData', function (req, res, next) {
+    Content.find({available:req.query.available}).then(function (data) {
+        res.send(data);
+    })
+    //res.send({type:'GET'})   //sending back a simple object
+})
 
 //Adding new data
 
