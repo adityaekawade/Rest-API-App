@@ -18,11 +18,11 @@ const app = express();
 
 //Connect to mongo db
 
-/*var uristring = process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL || 'mongodb://localhost/restapidb';*/
+var uristring = process.env.MONGODB_URI ||
+    process.env.MONGOHQ_URL || 'mongodb://localhost/restapidb';
 
 
-    mongoose.connect('mongodb://heroku_ltjg7t5s:nvl5a5afl1deor21s35ceoa003@ds129028.mlab.com:29028/heroku_ltjg7t5s');
+    mongoose.connect(uristring);
     mongoose.Promise = global.Promise;
 
 
@@ -44,7 +44,7 @@ app.use(function (err, req, res, next) {
 
 
 // listen for requests
-app.listen(process.env.port || 5000, function(){
+app.listen(process.env.port || 4000, function(){
     console.log('listening for requests');
 });
 
