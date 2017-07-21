@@ -5,14 +5,27 @@
 
 You can get all the stock items present in the inventory. API responds with an array of objects. 
 
+***Endpoint***: 
+*/api/item*
+
+***Method***:
+ GET
+
 ***Example of API call:***
 https://desolate-cove-26525.herokuapp.com/api/item
+
 
 
 ----------
 **Search** 
 
 Search for the particular stock item using the barcode number. API responds with a result that matches the string entered in the input box. 
+
+***Endpoint***: 
+*/api/specificItem*
+
+***Method***:
+ GET
 
 ***Example of API call:***
 https://desolate-cove-26525.herokuapp.com/api/specificItem?barCodeNumber=a1111a
@@ -35,9 +48,16 @@ https://desolate-cove-26525.herokuapp.com/api/specificItem?barCodeNumber=a1111a
 
 ----------
 
-**Post ** 
+**Post** 
 
 You can post the data to the API using the POST method. 
+
+***Endpoint***: 
+*/api/item*
+
+***Method***:
+ POST
+
 
 ***Example of API call:***
 https://desolate-cove-26525.herokuapp.com/api/item
@@ -89,3 +109,37 @@ https://desolate-cove-26525.herokuapp.com/api/item
 
 
 ----------
+
+**Update** 
+
+You can update using the PUT method.  
+
+***Endpoint***: 
+*/api/Iitem/:id*
+
+***Method***:
+ PUT
+
+
+***Example of API call :*** 
+
+https://desolate-cove-26525.herokuapp.com/api/item/59723441942d200011b4b6dc
+
+
+ 
+ 
+ ----------
+ 
+**Delete**
+
+You can delete an entry using the DELETE method. 
+
+***Endpoint***: 
+*/api/Iitem/:id*
+
+***Method***:
+ DELETE
+
+***Example of API call :*** 
+
+https://desolate-cove-26525.herokuapp.com/api/item/59723441942d200011b4b6dc
