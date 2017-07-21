@@ -150,6 +150,6 @@ You can delete an entry using the DELETE method.
 
 **Installing on local machine**
 
-Download or clone 
-npm install 
-npm start 
+ - Download or clone  
+ - npm install 
+ - npm start
