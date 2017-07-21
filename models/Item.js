@@ -2,9 +2,6 @@
  * Created by Aditya Ekawade on 7/20/2017.
  */
 
-/**
- * Created by Aditya Ekawade on 7/20/2017.
- */
 
 
 const mongoose = require('mongoose');
