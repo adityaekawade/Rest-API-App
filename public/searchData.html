@@ -44,7 +44,7 @@
     $(document).ready(function () {
         $('#searchSubmit').on('click', function () {
             searchVal = $('#searchInput').val();
-            $.getJSON('https://desolate-cove-26525.herokuapp.com/specificItem?barCodeNumber='+searchVal, function (data) {
+            $.getJSON('https://desolate-cove-26525.herokuapp.com/api/specificItem?barCodeNumber='+searchVal, function (data) {
                 //console.log(data[0].itemName);
                 $('#displayStock').append('<h3>Stock Details</h3><br> <b>Stock Name: </b>'+data[0].itemName+
                         '<br> <b>Stock Name: </b>'+data[0].itemNumber+
