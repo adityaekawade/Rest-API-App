@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<p id="demo"></p>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $.getJSON('http://localhost:5000/api/item', function (data) {
+            //console.log(data);
+            $.each(data, function (i, model) {
+            //for (var i =0 ; i<data.length; i++) {
+                //console.log(model.name)
+                //$('#demo').append(model.itemNumber + '<br>');
+                $('#demo').append(model.itemNumber + '<span> <small>'+ model.itemName +'</small> <br>');
+    /*                '<div class="panel-group"> ' +
+                        '<div class="panel panel-default"> ' +
+                            '<div class="panel-heading">' +
+                                '<h4 class="panel-title">' +
+                                    '<a id="collapse-content" data-toggle="collapse" href="#collapse1">'+ data[i].itemName +'</a>' +
+                                '</h4>' +
+                            '</div>' +
+                            '<div id="collapse1" class="panel-collapse collapse">' +
+                                '<div class="panel-body"> '+ data[i].itemNumber + ' </div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'*/
+
+
+            })
+
+        })
+    })
+</script>
+
+</body>
+</html>

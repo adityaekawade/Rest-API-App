@@ -4,17 +4,90 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
 </head>
 <body>
-Hello
-<a href="new.html">bdhjbdsjhfdsb</a>
+<nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">
+        AE
+    </a>
+</nav>
+
+<div class="container">
+<!--    <a href="addData.html" > Add New Item </a>
+    <p></p>
+    <a href="viewData.html" > View Items </a>
+    <p></p>
+    <a href="searchData.html" > View Items </a>-->
+
+    <div style="margin-top: 20px"><center>
+        <span>
+            <a href="addData.html"><button type="button" class="btn btn-outline-primary">Add new Stock</button></a>
+        </span>
+        <span>
+            <a href="searchData.html"><button type="button" class="btn btn-outline-info">Search for a Stock</button></a>
+        </span>
+
+    </center></div>
+
+
+
+    <p id="demo"></p>
+
+    <h3 class="display-4">Stock Items</h3>
+    <div class="card">
+        <div class="card-block text-nowrap">
+            The following data is obtained by using the GET method of API.
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-hover table-bordered" >
+        <thead>
+        <tr>
+
+            <th>Model Name</th>
+            <th>Model Number </th>
+            <th>Barcode </th>
+        </tr>
+        </thead>
+        <tbody id='providersFormElementsTable'>
+
+        </tbody>
+    </table>
+</div>
+
+
 <script>
-    $(document).ready(function () {
+/*    $(document).ready(function () {
         $.getJSON('http://localhost:5000/api/data', function (data) {
-            console.log(data);
+            //console.log(data[0].name);
+            for (var i =0 ; i<data.length; i++) {
+                //console.log(data[i].name)
+                $('#demo').append(data[i].name + '<br>');
+            }
+
         })
+    })*/
+
+
+
+$(document).ready(function () {
+    $.getJSON('https://desolate-cove-26525.herokuapp.com/api/item', function (data) {
+
+        for (var i =0 ; i<data.length; i++) {
+
+            //$('#demo').append(model.itemNumber + '<span> <small>'+ model.itemName +'</small> <br>');
+            $('#providersFormElementsTable').append('<tr><td>'+ data[i].itemName+'</td><td>'
+                + data[i].itemNumber+'</td><td>'
+                + data[i].barCodeNumber+'</td></tr>')
+
+
+        }
+
     })
+})
 </script>
 </body>
 </html>

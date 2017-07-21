@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">
+            AE
+        </a>
+    </nav>
+
+<div style="margin-top: 15px" class="container">
+    <div style="width: 60%; margin: auto">
+        <div id="alertPlaceholder"></div>
+        <h3 >Add New Stock Item</h3>
+        <!--<div class="card">
+            <div class="card-block text-nowrap">
+                The data entered is written to the API using the POST method.
+            </div>
+        </div>-->
+        <div class="alert alert-success" role="alert">
+            The data entered is written to the API using the POST method.
+        </div>
+        <br><hr>
+        <form>
+            <div class="form-group">
+                <label for="itemNumber">Item Number</label>
+                <input type="text" class="form-control" id="itemNumber" placeholder="Enter Item Number">
+            </div>
+            <div class="form-group">
+                <label for="itemName">Item Name</label>
+                <input type="text" class="form-control" id="itemName" placeholder="Enter Item Name">
+            </div>
+            <div class="form-group">
+                <label for="barCodeNumber">Item Name</label>
+                <input type="text" class="form-control" id="barCodeNumber" placeholder="Enter Barcode">
+            </div>
+            <div class="form-group">
+                <label for="warehouseLocation">Item Name</label>
+                <input type="text" class="form-control" id="warehouseLocation" placeholder="Enter Warehouse Location">
+            </div>
+
+            <button id="clickme" class="btn btn-primary" type="submit">Submit  </button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#clickme').on('click', function () {
+            var data = {
+                "itemNumber": $('#itemNumber').val(),
+                "itemName": $('#itemName').val(),
+                "barCodeNumber": $('#barCodeNumber').val(),
+                "warehouseLocation": $('#warehouseLocation').val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'https://desolate-cove-26525.herokuapp.com/api/item',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data) ,
+                success: function (x) {
+                    console.log(x);
+                },
+                error: function () {
+                    console.log("error")
+                }
+            });
+
+
+        })
+
+    });
+</script>
+
+</body>
+</html>

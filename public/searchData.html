@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">
+        AE
+    </a>
+</nav>
+
+
+<div style="margin-top: 20px" class="container">
+    <div style="width: 60%; margin: auto">
+        <h3 >Search for a Stock Item </h3>
+        <br>
+        <div class="form-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Enter Barcode">
+            <label><small>Enter a1111a</small></label>
+        </div>
+        <button id="searchSubmit" class="btn btn-primary" type="submit">Search  </button>
+        <br><hr>
+        <div style="margin-top: 15px" >
+
+            <div id="displayStock">
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<!--<input type="text" id="searchInput">
+<button id="searchSubmit">Search</button>-->
+
+
+<script>
+    $(document).ready(function () {
+        $('#searchSubmit').on('click', function () {
+            searchVal = $('#searchInput').val();
+            $.getJSON('https://desolate-cove-26525.herokuapp.com/specificItem?barCodeNumber='+searchVal, function (data) {
+                //console.log(data[0].itemName);
+                $('#displayStock').append('<h3>Stock Details</h3><br> <b>Stock Name: </b>'+data[0].itemName+
+                        '<br> <b>Stock Name: </b>'+data[0].itemNumber+
+                        '<br> <b>Warehouse Location: </b>' + data[0].warehouseLocation +
+                        '<br> <b>In Stock: </b>' + data[0].inStock
+                )
+            })
+        });
+
+    })
+</script>
+
+</body>
+</html>

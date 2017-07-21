@@ -11,9 +11,34 @@ const Content = require('../models/content');
 const Ninja = require('../models/ninja');
 
 
+const Item = require('../models/Item');
+
+
 //get data from database
 router.get('/data', function (req, res, next) {
     Content.find({}).then(function (data) {
+        res.send(data);
+    })
+    //res.send({type:'GET'})   //sending back a simple object
+})
+
+
+
+//get data from  Items
+
+router.get('/item', function (req, res, next) {
+    Item.find({}).then(function (data) {
+        res.send(data);
+    })
+    //res.send({type:'GET'})   //sending back a simple object
+})
+
+
+
+//search item
+
+router.get('/specificItem', function (req, res, next) {
+    Item.find({barCodeNumber:req.query.barCodeNumber}).then(function (data) {
         res.send(data);
     })
     //res.send({type:'GET'})   //sending back a simple object
@@ -34,6 +59,14 @@ router.post('/data', function(req, res, next){
         res.send(data);
     }).catch(next);
 });
+
+
+router.post('/item', function(req, res, next){
+    Item.create(req.body).then(function(data){
+        res.send(data);
+    }).catch(next);
+});
+
 
 //Update data from database
 router.put('/data/:id', function (req, res, next) {
