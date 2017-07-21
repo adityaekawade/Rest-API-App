@@ -142,3 +142,14 @@ You can delete an entry using the DELETE method.
 
 ***Example of API call :*** 
 /api/item/59723441942d200011b4b6dc
+
+
+
+----------
+
+
+**Installing on local machine**
+
+Download or clone 
+npm install 
+npm start 
