@@ -79,6 +79,15 @@ router.put('/data/:id', function (req, res, next) {
     //res.send({type:'PUT'})
 });
 
+//Update Item from database
+router.put('/item/:id', function (req, res, next) {
+    Item.findByIdAndUpdate({_id:req.params.id},req.body).then(function () {
+        Item.findOne({_id:req.params.id}).then(function (data) {
+            res.send(data);
+        });
+    });
+});
+
 
 // Deleting data from database
 router.delete('/data/:id', function (req, res, next) {
@@ -88,6 +97,13 @@ router.delete('/data/:id', function (req, res, next) {
         res.send(data); //Will show the id that we deleted.
     });
     //res.send({type:'DELETE'})
+});
+
+// Deleting Item from database
+router.delete('/item/:id', function (req, res, next) {
+    Item.findByIdAndRemove({_id: req.params.id}).then(function (data) {
+        res.send(data);
+    });
 });
 
 
