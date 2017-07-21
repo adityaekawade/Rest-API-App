@@ -123,7 +123,7 @@ You can update using the PUT method.
 
 ***Example of API call :*** 
 
-https://desolate-cove-26525.herokuapp.com/api/item/59723441942d200011b4b6dc
+/api/item/59723441942d200011b4b6dc
 
 
  
@@ -141,5 +141,4 @@ You can delete an entry using the DELETE method.
  DELETE
 
 ***Example of API call :*** 
-
-https://desolate-cove-26525.herokuapp.com/api/item/59723441942d200011b4b6dc
+/api/item/59723441942d200011b4b6dc
